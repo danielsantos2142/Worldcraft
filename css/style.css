@@ -1,0 +1,403 @@
+/* Variáveis de Cores Temáticas */
+:root {
+    --color-grass-top: #6aa84f;
+    --color-dirt: #554433;
+    --color-stone: #444444;
+    --color-wood: #7f6d54;
+    --color-ui-dark: #2c2c2c;
+    --color-ui-light: #6e6e6e;
+    --color-accent: #ffd700; /* Dourado */
+    --color-nether: #8b0000; /* Vermelho escuro */
+    --color-end: #4b0082; /* Roxo escuro */
+}
+
+/* Ajuste de espaçamento 1.5 para todas as páginas */
+body {
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-dirt); 
+    /* Padrão simples de pixel/bloco no fundo */
+    background-image: linear-gradient(0deg, transparent 9px, #4a382d 9px, #4a382d 10px, transparent 10px), 
+                      linear-gradient(90deg, transparent 9px, #4a382d 9px, #4a382d 10px, transparent 10px);
+    background-size: 10px 10px;
+    color: #e0e0e0;
+    padding-top: 1rem; /* Adiciona espaço no topo */
+}
+
+.paragrafo-formatado {
+    line-height: 1.5;
+}
+
+/* 15. Responsividade: Conteúdo centralizado com bordas verticais para desktop */
+.container-responsivo {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Estilo para Títulos (Fonte Pixel) */
+.font-game-title {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 4px 4px 0px #1c1c1c; /* Sombra forte para efeito 3D pixelado */
+}
+
+/* Estilo para Títulos de Seção (H2) */
+h2.title-block {
+    border-bottom: 6px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 11. Link no texto com formatação pixelada */
+.link-personalizado {
+    color: var(--color-accent);
+    text-decoration: none; /* Remove underline padrão */
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-accent);
+    transition: color 0.1s, border-bottom 0.1s;
+}
+
+.link-personalizado:hover {
+    color: white; 
+    border-bottom: 2px solid white;
+}
+
+/* Estilo de Seção: Bloco de Conteúdo (Simula Pedra/Cobblestone) */
+.page-section {
+    border: 8px solid var(--color-stone); /* Borda grossa */
+    border-radius: 4px; /* Mais quadrado */
+    background-color: var(--color-ui-dark); 
+    box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.7); /* Sombra pesada para efeito 3D */
+    margin-top: 2.5rem !important;
+    transition: transform 0.2s;
+}
+
+/* Estilo para Botões de Navegação (Menu de Jogo) */
+.nav-link {
+    border: 4px solid var(--color-stone);
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.5);
+    transition: all 0.1s ease-in-out;
+    transform: translate(0, 0); 
+    color: #1c1c1c;
+    font-weight: 900;
+    /* Garante que o texto seja legível */
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4); 
+    margin-top: 0.5rem;
+}
+
+.nav-link:hover {
+    transform: translate(-2px, -2px); 
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+}
+
+/* Estilo para link de navegação ATIVO */
+.nav-link.active {
+    transform: translate(2px, 2px); /* Efeito de 'pressionado' */
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.5);
+    color: white;
+    text-shadow: 2px 2px 0px #1c1c1c;
+    border-color: var(--color-accent);
+    /* Cor de fundo é definida no JS */
+}
+
+/* Cores Ativas Específicas */
+.nav-link.active-guide {
+    background-color: #2e7d32; /* Verde Escuro da Grama */
+}
+
+.nav-link.active-mining {
+    background-color: #7b241c; /* Vermelho Escuro do Nether */
+}
+
+.nav-link.active-nether {
+     background-color: #512da8; /* Roxo Escuro do Nether/Obsidiana */
+}
+
+.nav-link.active-mybuilds {
+    background-color: #ff6e40; /* Laranja Abóbora/Accento */
+}
+
+/* Estilo para Cards de Mob/Criatura */
+.mob-card {
+    background-color: var(--color-ui-light);
+    border: 4px solid var(--color-ui-light);
+    border-radius: 2px;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mob-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 0.6);
+}
+
+/* ESTILO PARA ÍCONE ENDERMAN AO LADO DO TÍTULO */
+.icon-enderman {
+    height: 1.5em; /* Ajuste o tamanho do ícone para 1.5 vezes a altura do texto */
+    width: auto;
+    vertical-align: middle; /* Alinha o ícone verticalmente com o texto */
+    margin-left: 4px; /* Espaçamento entre o texto e o ícone */
+    image-rendering: pixelated; /* Mantém a nitidez do pixel art */
+    display: inline-block; 
+}
+
+/* Estilo para placeholders de imagem/foto */
+.image-placeholder {
+    border: 4px dashed #999;
+    background-color: #333;
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    height: 150px; /* Altura padrão */
+}
+
+/* Estilo para o menu hambúrguer */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger-menu span {
+    height: 3px;
+    width: 25px;
+    background: #e0e0e0;
+    margin-bottom: 4px;
+    border-radius: 2px;
+}
+
+.nav-menu {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #2c2c2c;
+        z-index: 100;
+        padding: 1rem;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Estilo para dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2c2c2c;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 4px solid var(--color-stone);
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #e0e0e0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #3c3c3c;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para o carrossel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 4px solid var(--color-stone);
+    border-radius: 4px;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+
+.carousel-indicator.active {
+    background-color: white;
+}
+
+/* Estilo para formulários */
+.form-container {
+    background-color: var(--color-ui-dark);
+    border: 4px solid var(--color-stone);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #3c3c3c;
+    border: 2px solid var(--color-stone);
+    border-radius: 4px;
+    color: #e0e0e0;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-submit {
+    background-color: var(--color-accent);
+    color: #1c1c1c;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.form-submit:hover {
+    background-color: #ffec8b;
+}
+
+/* Estilos específicos para a página dos submundos */
+.nether-section {
+    border-left: 8px solid var(--color-nether);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.end-section {
+    border-left: 8px solid var(--color-end);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.dimension-card {
+    background-color: var(--color-ui-dark);
+    border: 4px solid;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+}
+
+.nether-card {
+    border-color: var(--color-nether);
+}
+
+.end-card {
+    border-color: var(--color-end);
+}
+
+/* Utilitários Tailwind que você estava usando */
+.hidden {
+    display: none;
+}
+
+/* Estilos para tabelas */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+}
+
+/* Estilos para listas */
+ul, ol {
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}

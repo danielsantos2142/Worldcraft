@@ -1,0 +1,2747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worldcraft Guia: Mobs, Biomas e Construções</title>
+
+    <!-- Ícone para a aba das páginas (Favicon - Icone de Bloco de Grama) -->
+    <link rel="icon" href="https://placehold.co/32x32/1e88e5/ffffff?text=WCG">
+
+    <!-- Tailwind CSS CDN para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Bootstrap CSS para página específica -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fontes de texto externa: Press Start 2P para títulos (Pixelado) e Inter para corpo (Legibilidade) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- CSS Customizado - Estilo Minecraft Pixelado -->
+    <style>
+        /* Variáveis de Cores Temáticas */
+        :root {
+            --color-grass-top: #6aa84f;
+            --color-dirt: #554433;
+            --color-stone: #444444; 
+            --color-wood: #7f6d54;
+            --color-ui-dark: #2c2c2c;
+            --color-ui-light: #6e6e6e;
+            --color-accent: #ffd700; /* Dourado */
+            --color-nether: #8b0000; /* Vermelho escuro */
+            --color-end: #4b0082; /* Roxo escuro */
+        }
+
+        /* Ajuste de espaçamento 1.5 para todas as páginas */
+        body {
+            line-height: 1.5;
+        }
+        
+        .paragrafo-formatado {
+            line-height: 1.5;
+        }
+
+        /* 15. Responsividade: Conteúdo centralizado com bordas verticais para desktop */
+        .container-responsivo {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+       body {
+    font-family: 'Inter', sans-serif;
+    background-color: #2c2c2c; /* Cor de fallback */
+    /* Imagem de fundo */
+    background-image: url('https://thumbs.dreamstime.com/z/vibrant-colorful-minecraft-landscape-adorned-adorable-bunnies-beautiful-flowers-scene-features-massive-tree-bright-353731956.jpg?ct=jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #e0e0e0;
+    padding-top: 1rem;
+    position: relative;
+}
+
+/* Camada escura para melhorar legibilidade do texto */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Ajuste a opacidade conforme necessário */
+    z-index: -1;
+}
+        
+        /* Estilo para Títulos (Fonte Pixel) */
+        .font-game-title {
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 4px 4px 0px #1c1c1c; /* Sombra forte para efeito 3D pixelado */
+        }
+
+        /* Estilo para Títulos de Seção (H2) */
+        h2.title-block {
+            border-bottom: 6px solid var(--color-accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 11. Link no texto com formatação pixelada */
+        .link-personalizado {
+            color: var(--color-accent);
+            text-decoration: none; /* Remove underline padrão */
+            font-weight: 700;
+            border-bottom: 2px solid var(--color-accent);
+            transition: color 0.1s, border-bottom 0.1s;
+        }
+        .link-personalizado:hover {
+            color: white; 
+            border-bottom: 2px solid white;
+        }
+
+        /* Estilo de Seção: Bloco de Conteúdo (Simula Pedra/Cobblestone) */
+        .page-section {
+            border: 8px solid var(--color-stone); /* Borda grossa */
+            border-radius: 4px; /* Mais quadrado */
+            background-color: var(--color-ui-dark); 
+            box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.7); /* Sombra pesada para efeito 3D */
+            margin-top: 2.5rem !important;
+            transition: transform 0.2s;
+        }
+
+        /* Estilo para Botões de Navegação (Menu de Jogo) */
+        .nav-link {
+            border: 4px solid var(--color-stone);
+            border-radius: 4px;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.5);
+            transition: all 0.1s ease-in-out;
+            transform: translate(0, 0); 
+            color: #1c1c1c;
+            font-weight: 900;
+            /* Garante que o texto seja legível */
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4); 
+            margin-top: 0.5rem;
+        }
+        
+        .nav-link:hover {
+            transform: translate(-2px, -2px); 
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+        }
+        
+        /* Estilo para link de navegação ATIVO */
+        .nav-link.active {
+            transform: translate(2px, 2px); /* Efeito de 'pressionado' */
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.5);
+            color: white;
+            text-shadow: 2px 2px 0px #1c1c1c;
+            border-color: var(--color-accent);
+            /* Cor de fundo é definida no JS */
+        }
+        
+        /* Cores Ativas Específicas */
+        .nav-link.active-guide {
+            background-color: #2e7d32; /* Verde Escuro da Grama */
+        }
+        .nav-link.active-mining {
+            background-color: #7b241c; /* Vermelho Escuro do Nether */
+        }
+        .nav-link.active-nether {
+             background-color: #512da8; /* Roxo Escuro do Nether/Obsidiana */
+        }
+        .nav-link.active-mybuilds {
+            background-color: #ff6e40; /* Laranja Abóbora/Accento */
+        }
+
+        /* Estilo para Cards de Mob/Criatura */
+        .mob-card {
+            background-color: var(--color-ui-light);
+            border: 4px solid var(--color-ui-light);
+            border-radius: 2px;
+            box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%; /* Torna os cards responsivos */
+            max-width: 400px; /* Limita a largura máxima */
+            margin: 0 auto; /* Centraliza os cards */
+        }
+        .mob-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ESTILO PARA ÍCONE ENDERMAN AO LADO DO TÍTULO */
+        .icon-enderman {
+            height: 1.5em; /* Ajuste o tamanho do ícone para 1.5 vezes a altura do texto */
+            width: auto;
+            vertical-align: middle; /* Alinha o ícone verticalmente com o texto */
+            margin-left: 4px; /* Espaçamento entre o texto e o ícone */
+            image-rendering: pixelated; /* Mantém a nitidez do pixel art */
+            display: inline-block; 
+        }
+        
+        /* Estilo para placeholders de imagem/foto */
+        .image-placeholder {
+            border: 4px dashed #999;
+            background-color: #333;
+            color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            height: 150px; /* Altura padrão */
+        }
+
+        /* Estilo para o menu hambúrguer */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .hamburger-menu span {
+            height: 3px;
+            width: 25px;
+            background: #e0e0e0;
+            margin-bottom: 4px;
+            border-radius: 2px;
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #2c2c2c;
+                z-index: 100;
+                padding: 1rem;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+            
+            /* Ajustes de responsividade para dispositivos móveis */
+            .mob-card {
+                max-width: 100%;
+            }
+            
+            .page-section {
+                margin-top: 1.5rem !important;
+            }
+            
+            .container-responsivo {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+        }
+
+        /* Estilo para dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2c2c2c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border: 4px solid var(--color-stone);
+            border-radius: 4px;
+        }
+        
+        .dropdown-content a {
+            color: #e0e0e0;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #3c3c3c;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Estilo para o carrossel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 4px solid var(--color-stone);
+            border-radius: 4px;
+        }
+        
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+        }
+        
+        .carousel-btn.prev {
+            left: 10px;
+        }
+        
+        .carousel-btn.next {
+            right: 10px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+        
+        .carousel-indicator.active {
+            background-color: white;
+        }
+
+        /* Estilo para formulários */
+        .form-container {
+            background-color: var(--color-ui-dark);
+            border: 4px solid var(--color-stone);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #3c3c3c;
+            border: 2px solid var(--color-stone);
+            border-radius: 4px;
+            color: #e0e0e0;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+        
+        .form-submit {
+            background-color: var(--color-accent);
+            color: #1c1c1c;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .form-submit:hover {
+            background-color: #ffec8b;
+        }
+        
+        /* Estilos específicos para a página dos submundos */
+        .nether-section {
+            border-left: 8px solid var(--color-nether);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .end-section {
+            border-left: 8px solid var(--color-end);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dimension-card {
+            background-color: var(--color-ui-dark);
+            border: 4px solid;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+        }
+        
+        .nether-card {
+            border-color: var(--color-nether);
+        }
+        
+        .end-card {
+            border-color: var(--color-end);
+        }
+        
+        /* Ajustes de responsividade para imagens */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Ajustes para tabelas responsivas */
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        /* Ajustes para elementos de grid */
+        .grid-responsive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Estilos para a página de construção */
+        .construction-section {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            border: 4px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .section-header {
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, transparent, currentColor, transparent) 1;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Cards de Receitas Simplificados */
+        .recipe-card-simple {
+            background: #2d2d2d;
+            border: 3px solid #4a4a4a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .recipe-card-simple:hover {
+            transform: translateY(-5px);
+            border-color: #f59e0b;
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
+        }
+
+        .recipe-image-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: #374151;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #555;
+        }
+
+        .recipe-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .recipe-title-simple {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            color: #fbbf24;
+            margin: 0;
+        }
+
+        /* Guia da Casa */
+        .guide-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .guide-description {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .materials-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .material-category {
+            background: #374151;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+        }
+
+        .category-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9rem;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .material-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .material-list li {
+            color: #e5e7eb;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #4b5563;
+        }
+
+        .material-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Galeria */
+        .gallery-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .gallery-main {
+            flex: 1;
+        }
+
+        .main-image-container {
+            border: 4px solid #f59e0b;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1f2937;
+        }
+
+        .image-label {
+            background: #f59e0b;
+            color: #1f2937;
+            padding: 0.5rem;
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .thumbnail-container {
+            border: 3px solid #6b7280;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #1f2937;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail-container:hover {
+            border-color: #f59e0b;
+            transform: scale(1.05);
+        }
+
+        .thumbnail-image {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #374151;
+            color: #9ca3af;
+            font-size: 1.5rem;
+        }
+
+        /* Dicas */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid #6b7280;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-3px);
+            border-color: #60a5fa;
+            box-shadow: 0 8px 20px rgba(96, 165, 250, 0.2);
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tip-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            color: #60a5fa;
+            margin-bottom: 1rem;
+        }
+
+        .tip-content {
+            color: #e5e7eb;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .guide-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .recipe-card-simple {
+                padding: 1rem;
+            }
+            
+            .recipe-title-simple {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* Estilos para biomas */
+        .bioma-card {
+            background: rgba(45, 90, 40, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4a9c42;
+            transition: all 0.3s ease;
+        }
+
+        .bioma-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(45, 90, 40, 0.3);
+        }
+
+        /* Estilos para mineração */
+        .new-feature-badge {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .deep-dark-warning {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-left: 4px solid #ef4444;
+            padding: 12px;
+            margin: 10px 0;
+        }
+
+        .cave-biome-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cave-biome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .mineral-spotlight {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        /* Estilos para formulários específicos */
+        .form-radio {
+            margin-right: 5px;
+        }
+
+        .form-checkbox {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER: Barra de Navegação Fixa -->
+    <div class="bg-gray-800 shadow-xl sticky top-0 z-10 border-b-8 border-gray-900/80">
+        <header class="container-responsivo py-4">
+            <!-- Título Principal com Estilo Pixelado -->
+            <h1 class="text-4xl sm:text-5xl font-game-title text-center text-green-400 flex items-center justify-center gap-3">
+    <img src="img/logowordcraft.gif" alt="Ícone" class="w-10 h-10 sm:w-12 sm:h-12">
+    Worldcraft <span class="text-white">Guia</span>
+</h1>
+            
+            <!-- Menu Hambúrguer para dispositivos móveis -->
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav>
+                <!-- Links de navegação com estilo de botão de menu -->
+                <ul class="nav-menu flex justify-center space-x-2 sm:space-x-4 text-center flex-wrap" id="navMenu">
+                    <li>
+                        <a href="#mobs" id="nav-mobs" class="nav-link active-guide px-3 py-2 text-xs sm:text-base transition duration-300 bg-green-500 hover:bg-green-600" onclick="showPage('mobs')">
+                            Mobs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#construcao" id="nav-construcao" class="nav-link px-3 py-2 text-xs sm:text-base transition duration-300 bg-green-500 hover:bg-green-600" onclick="showPage('construcao')">
+                            Construção
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#mapas_biomas" id="nav-mapas_biomas" class="nav-link px-3 py-2 text-xs sm:text-base transition duration-300 bg-green-500 hover:bg-green-600" onclick="showPage('mapas_biomas')">
+                            Biomas
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="showBiomaInfo('plains')">Planície</a>
+                            <a href="#" onclick="showBiomaInfo('taiga')">Taiga</a>
+                            <a href="#" onclick="showBiomaInfo('desert')">Deserto</a>
+                            <a href="#" onclick="showBiomaInfo('jungle')">Floresta</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#mineracao" id="nav-mineracao" class="nav-link px-3 py-2 text-xs sm:text-base transition duration-300 bg-green-500 hover:bg-green-600" onclick="showPage('mineracao')">
+                            Mineração
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submundos" id="nav-submundos" class="nav-link px-3 py-2 text-xs sm:text-base transition duration-300 bg-green-500 hover:bg-green-600" onclick="showPage('submundos')">
+                            Os Submundos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contato" id="nav-contato" class="nav-link px-3 py-2 text-xs sm:text-base transition duration-300 bg-green-500 hover:bg-green-600" onclick="showPage('contato')">
+                            Contato
+                        </a>
+                    </li>
+                    <!-- NOVO LINK PERSONALIZADO EM LARANJA/ABÓBORA -->
+                    <li>
+                        <a href="#minhas_construcoes" id="nav-minhas_construcoes" class="nav-link px-3 py-2 text-xs sm:text-base transition duration-300 bg-yellow-500 hover:bg-yellow-600" onclick="showPage('minhas_construcoes')">
+                            Minhas Construções
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT - Container Responsivo -->
+
+    <main class="container-responsivo py-8 sm:py-12">
+
+        <!-- PAGINA 1: Mobs & Criaturas -->
+        <section id="mobs" class="page-section p-6 transition duration-500">
+            <h2 class="text-3xl sm:text-4xl font-game-title text-green-400 title-block">
+                Guia de Mobs e Criaturas
+            </h2>
+
+            <p class="paragrafo-formatado mb-8 text-gray-300">
+                Descubra os detalhes essenciais sobre as criaturas que você encontrará no seu mundo.
+                com as criaturas mais perigosas!
+            </p>
+                            <!-- Mobs Hostis -->
+
+                <h3 class="text-2xl font-game-title text-red-400 mb-6">
+                    Mobs Hostis (Perigo Constante)
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+                    <!-- Card do Creeper -->
+
+                    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+                        <!-- Container da Imagem -->
+                        <div class="image-container bg-green-900 p-2 h-2/3 flex flex-col">
+                            <h4 class="text-xl font-bold text-green-300 mb-3 border-b border-green-600 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-3 h-3 bg-green-400 rounded-full"></span>
+                                    Creeper
+                                    <img src="img/rosto creeper.jpg" alt="Rosto de Creeper" class="icon-enderman w-6 h-6">
+                                </span>
+                            </h4>
+                            <div class="flex-1 flex items-center justify-center">
+                                <img src="img/creeperso.gif" alt="Creeper" class="w-full h-auto max-w-[300px] max-h-[300px] rounded-md object-contain" id="creeper-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Container das Informações -->
+                        <div class="info-container bg-gray-800 p-4 h-1/3">
+                            <p class="text-sm text-green-200 mb-3 leading-relaxed">
+                                <span class="font-semibold">Explode ao se aproximar.</span> Mantenha distância ou elimine rapidamente antes que detone.
+                            </p>
+                            <div class="drop-info bg-green-950 px-3 py-2 rounded border border-green-700">
+                                <p class="text-sm text-green-300 font-game-title">
+                                    <span class="font-bold">Drop Principal:</span> Pólvora
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card do Esqueleto -->
+
+                    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+                        <!-- Container da Imagem -->
+                        <div class="image-container bg-gray-700 p-2 h-2/3 flex flex-col">
+                            <h4 class="text-xl font-bold text-gray-100 mb-3 border-b border-gray-500 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-3 h-3 bg-gray-300 rounded-full"></span>
+                                    Esqueleto
+                                    <img src="img/esqueleto incon.jpg" alt="Rosto de Esqueleto" class="icon-enderman w-6 h-6">
+                                </span>
+                            </h4>
+                            <div class="flex-1 flex items-center justify-center">
+                                <img src="img/esqueleto gift.gif" alt="Esqueleto" class="w-full h-auto max-w-[280px] max-h-[280px] rounded-md object-contain" id="esqueleto-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Container das Informações -->
+                        <div class="info-container bg-gray-800 p-4 h-1/3">
+                            <p class="text-sm text-gray-200 mb-3 leading-relaxed">
+                                <span class="font-semibold">Atira flechas de longe.</span> Procure cobertura ou se aproxime rapidamente com sua espada.
+                            </p>
+                            <div class="drop-info bg-gray-900 px-3 py-2 rounded border border-gray-600">
+                                <p class="text-sm text-gray-300 font-game-title">
+                                    <span class="font-bold">Drop Principal:</span> Ossos, Flechas
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card do Enderman -->
+
+                    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+                        <!-- Container da Imagem -->
+                        <div class="image-container bg-purple-900 p-2 h-2/3 flex flex-col">
+                            <h4 class="text-xl font-bold text-violet-300 mb-3 border-b border-violet-600 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-3 h-3 bg-purple-400 rounded-full"></span>
+                                    Enderman
+                                    <img src="img/logo enderman.jpg" alt="Olhos de Enderman" class="icon-enderman w-6 h-6">
+                                </span>
+                            </h4>
+                            <div class="flex-1 flex items-center justify-center">
+                                <img src="https://minecraft.wiki/images/Enderman_Idle_%28Dungeons%29.gif?4d9cf" alt="Enderman" class="w-full h-auto max-w-[250px] max-h-[250px] rounded-md object-contain" id="enderman-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Container das Informações -->
+                        <div class="info-container bg-gray-800 p-4 h-1/3">
+                            <p class="text-sm text-violet-200 mb-3 leading-relaxed">
+                                <span class="font-semibold">Se teleporta e pega blocos.</span> Evite contato visual! Lute em áreas baixas - ele não gosta de água!
+                            </p>
+                            <div class="drop-info bg-purple-950 px-3 py-2 rounded border border-purple-700">
+                                <p class="text-sm text-violet-300 font-game-title">
+                                    <span class="font-bold">Drop Principal:</span> Olho do Enderman
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+            <!-- Mobs Pacíficos -->
+
+<h3 class="text-2xl font-game-title text-blue-400 mb-6">
+    Mobs Pacíficos (Seus Aliados)
+</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+    <!-- Card da Vaca -->
+
+    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+        <!-- Container da Imagem -->
+        <div class="image-container bg-brown-800 p-2 h-2/3 flex flex-col">
+            <h4 class="text-xl font-bold text-brown-200 mb-3 border-b border-brown-600 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-brown-400 rounded-full"></span>
+                    Vaca
+                    <img src="img/vacalogo.png" alt="Rosto de Vaca" class="icon-enderman w-6 h-6">
+                </span>
+            </h4>
+            <div class="flex-1 flex items-center justify-center">
+                <img src="img/vaca.gif" alt="Vaca" class="w-full h-auto max-w-[300px] max-h-[300px] rounded-md object-contain" id="vaca-image">
+            </div>
+        </div>
+        
+        <!-- Container das Informações -->
+        <div class="info-container bg-gray-800 p-4 h-1/3">
+            <p class="text-sm text-brown-200 mb-3 leading-relaxed">
+                <span class="font-semibold">Fonte de Couro e Leite.</span> Essencial para criação e recursos alimentares.
+            </p>
+            <div class="drop-info bg-brown-900 px-3 py-2 rounded border border-brown-600">
+                <p class="text-sm text-brown-300 font-game-title">
+                    <span class="font-bold">Item de Criação:</span> Trigo
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card do Porco -->
+
+    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+        <!-- Container da Imagem -->
+        <div class="image-container bg-pink-800 p-2 h-2/3 flex flex-col">
+            <h4 class="text-xl font-bold text-pink-200 mb-3 border-b border-pink-600 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-pink-400 rounded-full"></span>
+                    Porco
+                    <img src="img/porcologo.webp" alt="Rosto de Porco" class="icon-enderman w-6 h-6">
+                </span>
+            </h4>
+            <div class="flex-1 flex items-center justify-center">
+                <img src="img/porcogif.gif" alt="Porco" class="w-full h-auto max-w-[280px] max-h-[280px] rounded-md object-contain" id="porco-image">
+            </div>
+        </div>
+        
+        <!-- Container das Informações -->
+        <div class="info-container bg-gray-800 p-4 h-1/3">
+            <p class="text-sm text-pink-200 mb-3 leading-relaxed">
+                <span class="font-semibold">Fonte de Carne de Porco.</span> Excelente alimento para suas aventuras.
+            </p>
+            <div class="drop-info bg-pink-900 px-3 py-2 rounded border border-pink-600">
+                <p class="text-sm text-pink-300 font-game-title">
+                    <span class="font-bold">Item de Criação:</span> Cenoura, Batata ou Beterraba
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card da Ovelha -->
+     
+    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+        <!-- Container da Imagem -->
+        <div class="image-container bg-gray-600 p-2 h-2/3 flex flex-col">
+            <h4 class="text-xl font-bold text-gray-100 mb-3 border-b border-gray-400 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-white rounded-full"></span>
+                    Ovelha
+                    <img src="img/ovelhalogo.png" alt="Rosto de Ovelha" class="icon-enderman w-6 h-6">
+                </span>
+            </h4>
+            <div class="flex-1 flex items-center justify-center">
+                <img src="img/ovelhagif.gif" alt="Ovelha" class="w-full h-auto max-w-[250px] max-h-[250px] rounded-md object-contain" id="ovelha-image">
+            </div>
+        </div>
+
+        
+        
+        <!-- Container das Informações -->
+        <div class="info-container bg-gray-800 p-4 h-1/3">
+            <p class="text-sm text-gray-200 mb-3 leading-relaxed">
+                <span class="font-semibold">Fonte de Lã.</span> Para camas, decorações e banners coloridos.
+            </p>
+            <div class="drop-info bg-gray-700 px-3 py-2 rounded border border-gray-500">
+                <p class="text-sm text-gray-300 font-game-title">
+                    <span class="font-bold">Item de Criação:</span> Trigo
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Mobs Especiais - Aldeão e Afins -->
+
+<h3 class="text-2xl font-game-title text-emerald-400 mb-6">
+    Habitantes do Mundo
+</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+    <!-- Card do Aldeão -->
+
+    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+        <!-- Container da Imagem -->
+        <div class="image-container bg-emerald-800 p-2 h-2/3 flex flex-col">
+            <h4 class="text-xl font-bold text-emerald-200 mb-3 border-b border-emerald-600 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                <span class="flex items-center gap-3">
+                    <span class="w-4 h-4 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                    <span class="flex items-center gap-2">
+                        Aldeão
+                        <img src="img/aldeaologo.jpg" alt="Rosto de Aldeão" class="w-7 h-7">
+                    </span>
+                </span>
+            </h4>
+            <div class="flex-1 flex items-center justify-center">
+                <img src="img/aldeaogif.gif" alt="Aldeão" class="w-full h-auto max-w-[270px] max-h-[270px] rounded-md object-contain" id="aldao-image">
+            </div>
+        </div>
+        
+        <!-- Container das Informações -->
+        <div class="info-container bg-gray-800 p-4 h-1/3">
+            <p class="text-sm text-emerald-200 mb-3 leading-relaxed">
+                <span class="font-semibold">Mestre das trocas comerciais.</span> Oferece recursos únicos por esmeraldas.
+            </p>
+            <div class="drop-info bg-emerald-900 px-3 py-2 rounded border border-emerald-600">
+                <p class="text-sm text-emerald-300 font-game-title">
+                    <span class="font-bold">Item de Criação:</span> Pão e Cenoura
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card do Pillager -->
+
+    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+        <!-- Container da Imagem -->
+        <div class="image-container bg-red-800 p-2 h-2/3 flex flex-col">
+            <h4 class="text-xl font-bold text-red-200 mb-3 border-b border-red-600 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                <span class="flex items-center gap-3">
+                    <span class="w-4 h-4 bg-red-500 rounded-full flex-shrink-0"></span>
+                    <span class="flex items-center gap-2">
+                        Pillager
+                        <img src="img/apilagersincon.gif" alt="Rosto de Pillager" class="w-7 h-7">
+                    </span>
+                </span>
+            </h4>
+            <div class="flex-1 flex items-center justify-center">
+                <img src="img/pillagergif.webp" alt="Pillager" class="w-full h-auto max-w-[270px] max-h-[270px] rounded-md object-contain" id="pillager-image">
+            </div>
+        </div>
+        
+        <!-- Container das Informações -->
+        <div class="info-container bg-gray-800 p-4 h-1/3">
+            <p class="text-sm text-red-200 mb-3 leading-relaxed">
+                <span class="font-semibold">Inimigo das vilas.</span> Ataca com besta e pode causar efeito de Má Sorte.
+            </p>
+            <div class="drop-info bg-red-900 px-3 py-2 rounded border border-red-600">
+                <p class="text-sm text-red-300 font-game-title">
+                    <span class="font-bold">Drop Principal:</span> Besta, Bandeira Ominosa
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card do Vendedor Ambulante -->
+
+    <div class="mob-card rounded-md shadow-lg overflow-hidden">
+        <!-- Container da Imagem -->
+        <div class="image-container bg-cyan-800 p-2 h-2/3 flex flex-col">
+            <h4 class="text-xl font-bold text-cyan-200 mb-3 border-b border-cyan-600 pb-2 font-game-title text-shadow-sm flex items-center justify-between">
+                <span class="flex items-center gap-3">
+                    <span class="w-4 h-4 bg-cyan-400 rounded-full flex-shrink-0"></span>
+                    <span class="flex items-center gap-2">
+                        Vendedor
+                        <img src="img/vendedoresmeraldalogo.gif" alt="Rosto de Vendedor" class="w-10 h-10">
+                    </span>
+                </span>
+            </h4>
+            <div class="flex-1 flex items-center justify-center">
+                <img src="img/vendedor.png" alt="Vendedor" class="w-full h-auto max-w-[260px] max-h-[260px] rounded-md object-contain" id="vendedor-image">
+            </div>
+        </div>
+        
+        <!-- Container das Informações -->
+        <div class="info-container bg-gray-800 p-4 h-1/3">
+            <p class="text-sm text-cyan-200 mb-3 leading-relaxed">
+                <span class="font-semibold">Comerciante nômade.</span> Oferece itens exóticos e raros em troca de esmeraldas.
+            </p>
+            <div class="drop-info bg-cyan-900 px-3 py-2 rounded border border-cyan-600">
+                <p class="text-sm text-cyan-300 font-game-title">
+                    <span class="font-bold">Oferta Especial:</span> Itens exóticos
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+            <!-- Formulário de Feedback sobre Mobs -->
+            <div class="form-container mt-8">
+                <h3 class="text-xl font-game-title text-green-400 mb-4">Qual mob você mais tem dificuldade?</h3>
+                <form id="mobFeedbackForm" method="post" action="/submit-mob-feedback">
+                    <div class="form-group">
+                        <label for="mobName" class="form-label">Nome do Mob:</label>
+                        <input type="text" id="mobName" name="mobName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficultyLevel" class="form-label">Nível de Dificuldade:</label>
+                        <select id="difficultyLevel" name="difficultyLevel" class="form-input" required>
+                            <option value="">Selecione...</option>
+                            <option value="easy">Fácil</option>
+                            <option value="medium">Médio</option>
+                            <option value="hard">Difícil</option>
+                            <option value="very-hard">Muito Difícil</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobComment" class="form-label">Comentário:</label>
+                        <textarea id="mobComment" name="mobComment" class="form-input" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Enviar Feedback</button>
+                </form>
+            </div>
+
+            <!-- Link para setor da mesma página (Topo) -->
+            <a href="#top" class="text-sm font-game-title text-green-500 hover:text-green-300 transition duration-200 block text-right mt-4">
+                [TOPO]
+            </a>
+        </section>
+
+        <!-- PAGINA 2: Guias de Construção -->
+
+<section id="construcao" class="page-section p-6 mt-8 hidden">
+    <!-- Cabeçalho com ícone -->
+    <div class="flex items-center justify-center gap-4 mb-8">
+        <img src="img/Picaretaencantada.gif" alt="Mesa de Trabalho" class="w-12 h-12 sm:w-16 sm:h-16 image-rendering-pixelated">
+        <h2 class="text-3xl sm:text-4xl font-game-title text-green-400 title-block text-center">
+            Guias de Construção e Receitas
+        </h2>
+        <img src="img/bigorna.png" alt="Bigorna" class="w-12 h-12 sm:w-16 sm:h-16 image-rendering-pixelated">
+    </div>
+
+    <!-- SEÇÃO 1: RECEITAS ESSENCIAIS -->
+
+    <div class="construction-section mb-12">
+        <div class="section-header">
+            <h3 class="text-2xl font-game-title text-yellow-400 mb-6">
+                📜 Receitas Essenciais
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            <!-- Card Mesa de Trabalho -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/craftmesatrabalho.jpg" alt="Mesa de Trabalho" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Mesa de Trabalho</h4>
+            </div>
+
+            <!-- Card Fornalha -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/fornalha.png" alt= "Fornalha" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Fornalha</h4>
+            </div>
+
+            <!-- Card Baú -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/bau.webp" alt="Baú" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Baú</h4>
+            </div>
+
+            <!-- Card Picareta -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/picareta.png" alt="Picareta de Pedra" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Picareta de Pedra</h4>
+            </div>
+
+            <!-- Card Tocha -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/tocha.gif" alt="Tocha" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Tocha</h4>
+            </div>
+
+            <!-- Card Espada -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/espadapedra.png" alt="Espada de Pedra" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Espada de Pedra</h4>
+            </div>
+
+            <!-- Card Machado -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/machadopedra.png" alt="Machado de Pedra" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Machado de Pedra</h4>
+            </div>
+
+            <!-- Card Pá -->
+
+            <div class="recipe-card-simple">
+                <div class="recipe-image-container">
+                    <img src="img/papedra.png" alt="Pá de Pedra" class="recipe-image">
+                </div>
+                <h4 class="recipe-title-simple">Pá de Pedra</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 2: CASA INICIAL -->
+
+    <div class="construction-section mb-12">
+        <div class="section-header">
+            <h3 class="text-2xl font-game-title text-lime-400 mb-6">
+                🏠 Guia: Casa Inicial
+            </h3>
+        </div>
+
+        <div class="guide-container">
+            <div class="guide-content">
+                <p class="guide-description">
+                    Sua primeira casa é vital para a sobrevivência. Deve ser compacta, segura contra Creepers e ter espaço para cama, fornalha e baú. Use madeira e pedregulho para uma construção resistente.
+                </p>
+
+                <div class="materials-grid">
+                    <div class="material-category">
+                        <h4 class="category-title">🏗️ Estrutura</h4>
+                        <ul class="material-list">
+                            <li>Base: 7×9 blocos nivelados</li>
+                            <li>Paredes: 3-4 blocos de altura</li>
+                            <li>Telhado: Escadas e lajes</li>
+                            <li>Fundamento: Pedra ou madeira</li>
+                        </ul>
+                    </div>
+
+                    <div class="material-category">
+                        <h4 class="category-title">🛠️ Materiais</h4>
+                        <ul class="material-list">
+                            <li>64x Tábuas de Madeira</li>
+                            <li>32x Pedregulho</li>
+                            <li>16x Vidro</li>
+                            <li>8x Tochas/Lanternas</li>
+                            <li>1x Porta de Madeira</li>
+                        </ul>
+                    </div>
+
+                    <div class="material-category">
+                        <h4 class="category-title">🎯 Essenciais</h4>
+                        <ul class="material-list">
+                            <li>Cama para definir spawn</li>
+                            <li>Baú para armazenamento</li>
+                            <li>Fornalha para cozinhar</li>
+                            <li>Mesa de Trabalho</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galeria da Casa -->
+
+            <div class="gallery-section">
+                <div class="gallery-main">
+                    <div class="main-image-container">
+                        <p class="image-label">EXTERIOR PRINCIPAL</p>
+                        <img src="https://preview.redd.it/a-simple-survival-house-that-i-made-v0-kbr9cgocl5vd1.png?auto=webp&s=dd5f8fd14d7af5fb7b9f7a2d0d229bab25e4e662" 
+                             alt="Casa Minecraft" class="gallery-image">
+                    </div>
+                </div>
+
+                <div class="gallery-thumbnails">
+                    <div class="thumbnail-container">
+                        <p class="image-label">ILUMINAÇÃO</p>
+                        <img src="img/noitegft.gif" alt="Iluminação Noturna" class="thumbnail-image">
+                    </div>
+                    <div class="thumbnail-container">
+                        <p class="image-label">PROTEÇÃO</p>
+                        <img src="https://i.ytimg.com/vi/ajwTTpC7Lmw/hqdefault.jpg" alt="Proteção" class="thumbnail-image">
+                    </div>
+                    <div class="thumbnail-container">
+                        <p class="image-label">INTERIOR</p>
+                        <img src="img/interiorcasa.jpg" alt="Interior da Casa" class="thumbnail-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 3: DICAS AVANÇADAS -->
+
+    <div class="construction-section">
+        <div class="section-header">
+            <h3 class="text-2xl font-game-title text-cyan-400 mb-6">
+                💡 Dicas de Segurança
+            </h3>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">🛡️</div>
+                <h4 class="tip-title">Proteção Perimetral</h4>
+                <p class="tip-content">Construa uma cerca de 2 blocos de altura ou um fosso ao redor da casa para impedir mobs.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">💡</div>
+                <h4 class="tip-title">Iluminação Estratégica</h4>
+                <p class="tip-content">Coloque tochas a cada 6-8 blocos para prevenir spawn de mobs hostis na área.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">🚪</div>
+                <h4 class="tip-title">Entrada Segura</h4>
+                <p class="tip-content">Use portas de ferro ou construa um saguão com duas portas para proteção extra.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">🏃</div>
+                <h4 class="tip-title">Rota de Fuga</h4>
+                <p class="tip-content">Sempre tenha uma saída secreta ou alternativa para emergências.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulário de Sugestão de Construção (ORIGINAL) -->
+
+    <div class="form-container mt-8">
+        <h3 class="text-xl font-game-title text-green-400 mb-4">Sugira uma construção para o guia</h3>
+        <form id="constructionSuggestionForm" method="post" action="/submit-construction-suggestion">
+            <div class="form-group">
+                <label for="constructionType" class="form-label">Tipo de Construção:</label>
+                <select id="constructionType" name="constructionType" class="form-input" required>
+                    <option value="">Selecione...</option>
+                    <option value="house">Casa</option>
+                    <option value="farm">Fazenda</option>
+                    <option value="redstone">Máquina Redstone</option>
+                    <option value="decorative">Decoração</option>
+                    <option value="other">Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="constructionDescription" class="form-label">Descrição da Construção:</label>
+                <textarea id="constructionDescription" name="constructionDescription" class="form-input" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="userExperience" class="form-label">Seu nível de experiência:</label>
+                <select id="userExperience" name="userExperience" class="form-input" required>
+                    <option value="">Selecione...</option>
+                    <option value="beginner">Iniciante</option>
+                    <option value="intermediate">Intermediário</option>
+                    <option value="advanced">Avançado</option>
+                </select>
+            </div>
+            <button type="submit" class="form-submit">Enviar Sugestão</button>
+        </form>
+    </div>
+    
+    <!-- Link para setor da mesma página (Topo) - ORIGINAL -->
+
+    <a href="#top" class="text-sm font-game-title text-green-500 hover:text-green-300 transition duration-200 block text-right mt-4">
+        [TOPO]
+    </a>
+</section>
+
+        <!-- PAGINA 3: Mapas e Biomas -->
+<section id="mapas_biomas" class="page-section p-6 mt-8 hidden">
+    <h2 class="text-3xl sm:text-4xl font-game-title text-green-400 title-block">
+        Exploração de Mapas e Biomas
+    </h2>
+
+    <p class="paragrafo-formatado mb-8 text-gray-300">
+        O mundo do Minecraft é composto por diversos biomas únicos, cada um com suas próprias características, recursos e desafios. Explorar esses ambientes é fundamental para coletar recursos específicos e descobrir estruturas raras.
+    </p>
+
+    <!-- BIOMAS PRINCIPAIS -->
+    <h3 class="text-2xl font-game-title text-green-400 mb-4 border-b-2 border-green-500 pb-2">
+        Biomas Principais do Overworld
+    </h3>
+    
+    <!-- BIOMA 1: Planície (Plains) -->
+    <div class="bioma-section mb-8">
+        <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">
+            Planície (Plains)
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-2">
+                <p class="paragrafo-formatado text-gray-300 mb-4">
+                    O Bioma da Planície é um dos mais comuns e ideais para começar. É plano, rico em grama e flores. É o local perfeito para construir sua primeira casa e iniciar uma fazenda. Quase todos os mobs pacíficos podem ser encontrados aqui.
+                </p>
+                
+                <div class="bioma-card plains-card">
+                    <h5 class="text-lg font-bold text-green-300 mb-2">Características Principais:</h5>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-1">
+                        <li>Terreno plano ideal para construção</li>
+                        <li>Abundância de grama e flores</li>
+                        <li>Presença de aldeias e cavalos</li>
+                        <li>Recursos: madeira de carvalho, trigo, flores</li>
+                    </ul>
+                </div>
+                
+                <p class="mt-4">
+                    <a href="https://minecraft.wiki/w/Plains" target="_blank" class="link-personalizado">
+                        (Saiba mais na Wiki Oficial)
+                    </a>
+                </p>
+            </div>
+            
+            <div class="md:col-span-1 border-4 border-green-500 p-1 bg-gray-700 shadow-md">
+                <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">PLANÍCIE</p>
+                <img src="https://i.redd.it/a55wp4c5vj9f1.png" alt="Bioma Planície" class="w-full h-auto rounded-md mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- BIOMA 2: Taiga (Taiga) -->
+    <div class="bioma-section mb-8">
+        <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">
+            Taiga (Taiga)
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-2">
+                <p class="paragrafo-formatado text-gray-300 mb-4">
+                    A Taiga é fria e coberta por grandes árvores de pinheiro (Spruce). É uma ótima fonte de madeira escura e abriga os Lobos que podem ser domados com ossos. Cuidado com o terreno acidentado ao minerar.
+                </p>
+                
+                <div class="bioma-card taiga-card">
+                    <h5 class="text-lg font-bold text-green-300 mb-2">Características Principais:</h5>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-1">
+                        <li>Florestas densas de pinheiros</li>
+                        <li>Presença de lobos domesticáveis</li>
+                        <li>Pode conter aldeias de taiga</li>
+                        <li>Recursos: madeira de pinheiro, bagas doces, samambaias</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="md:col-span-1 border-4 border-green-500 p-1 bg-gray-700 shadow-md">
+                <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">TAIGA</p>
+                <img src="https://i.redd.it/fvqvquev50l61.png" alt="Bioma Taiga" class="w-full h-auto rounded-md mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- BIOMA 3: Deserto (Desert) -->
+    <div class="bioma-section mb-8">
+        <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">
+            Deserto (Desert)
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-2">
+                <p class="paragrafo-formatado text-gray-300 mb-4">
+                    O Deserto é marcado por areia, cactos e pouca vida vegetal. Mobs hostis podem aparecer à luz do dia nas áreas sombreadas. É onde você pode encontrar os valiosos <strong>Templos do Deserto</strong> repletos de tesouros!
+                </p>
+                
+                <div class="bioma-card desert-card">
+                    <h5 class="text-lg font-bold text-green-300 mb-2">Características Principais:</h5>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-1">
+                        <li>Vastas extensões de areia</li>
+                        <li>Presença de cactos e arbustos mortos</li>
+                        <li>Templos do deserto com tesouros</li>
+                        <li>Recursos: cactos, areia, arenito, ouro</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="md:col-span-1 border-4 border-green-500 p-1 bg-gray-700 shadow-md">
+                <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">DESERTO</p>
+                <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e6/Desertsunsetvillage.png/revision/latest/scale-to-width-down/250?cb=20210708154354" alt="Bioma Deserto" class="w-full h-auto rounded-md mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- BIOMA 4: Floresta (Forest) -->
+    <div class="bioma-section mb-8">
+        <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">
+            Floresta (Forest)
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-2">
+                <p class="paragrafo-formatado text-gray-300 mb-4">
+                    As florestas são biomas densamente arborizados com uma grande variedade de árvores. Excelente fonte de madeira, mas cuidado com a baixa visibilidade que pode esconder mobs hostis. Existem variações como Floresta de Bétula e Floresta de Flores.
+                </p>
+                
+                <div class="bioma-card forest-card">
+                    <h5 class="text-lg font-bold text-green-300 mb-2">Características Principais:</h5>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-1">
+                        <li>Alta densidade de árvores</li>
+                        <li>Grande variedade de madeiras</li>
+                        <li>Abundância de flores e cogumelos</li>
+                        <li>Recursos: madeira de carvalho/bétula, maçãs, flores</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="md:col-span-1 border-4 border-green-500 p-1 bg-gray-700 shadow-md">
+                <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">FLORESTA</p>
+                <img src="img/floresta.webp" alt="Bioma Floresta" class="w-full h-auto rounded-md mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- BIOMA 5: Montanha (Mountains) -->
+    <div class="bioma-section mb-8">
+        <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">
+            Montanha (Mountains)
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-2">
+                <p class="paragrafo-formatado text-gray-300 mb-4">
+                    As montanhas oferecem terrenos extremamente acidentados com grandes elevações. São excelentes para mineração em altas altitudes, mas apresentam desafios de navegação. Podem conter emas de esmeralda e estruturas únicas.
+                </p>
+                
+                <div class="bioma-card mountain-card">
+                    <h5 class="text-lg font-bold text-green-300 mb-2">Características Principais:</h5>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-1">
+                        <li>Terreno extremamente acidentado</li>
+                        <li>Neve no topo das montanhas altas</li>
+                        <li>Geração de esmeraldas</li>
+                        <li>Recursos: pedra, carvão, ferro, esmeraldas</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="md:col-span-1 border-4 border-green-500 p-1 bg-gray-700 shadow-md">
+                <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">MONTANHA</p>
+                <img src="img/montanha.jpg" alt="Bioma Montanha" class="w-full h-auto rounded-md mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- BIOMA 6: Pântano (Swamp) -->
+    <div class="bioma-section mb-8">
+        <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">
+            Pântano (Swamp)
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-2">
+                <p class="paragrafo-formatado text-gray-300 mb-4">
+                    Os pântanos são biomas úmidos com água de cor esverdeada, árvores cobertas de videiras e lótus. São o lar das Bruxas e das tão procuradas Cabana das Bruxas. Excelente local para encontrar sapos e coletar argila.
+                </p>
+                
+                <div class="bioma-card swamp-card">
+                    <h5 class="text-lg font-bold text-green-300 mb-2">Características Principais:</h5>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-1">
+                        <li>Água de cor esverdeada</li>
+                        <li>Presença de cabanas de bruxas</li>
+                        <li>Árvores cobertas por videiras</li>
+                        <li>Recursos: argila, lírios, cana-de-açúcar, sementes de lótus</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="md:col-span-1 border-4 border-green-500 p-1 bg-gray-700 shadow-md">
+                <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">PÂNTANO</p>
+                <img src="img/Pantano.webp" alt="Bioma Pântano" class="w-full h-auto rounded-md mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- BIOMA 7: Oceano (Ocean) -->
+    <div class="bioma-section mb-8">
+        <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">
+            Oceano (Ocean)
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div class="md:col-span-2">
+                <p class="paragrafo-formatado text-gray-300 mb-4">
+                    Os oceanos são vastas extensões de água que separam os continentes. Podem conter monumentos oceânicos, naufrágios e recifes de coral. Requerem preparação especial para exploração, como poções de respiração aquática.
+                </p>
+                
+                <div class="bioma-card ocean-card">
+                    <h5 class="text-lg font-bold text-green-300 mb-2">Características Principais:</h5>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-1">
+                        <li>Vastas extensões de água</li>
+                        <li>Monumentos oceânicos com guardiões</li>
+                        <li>Recifes de coral coloridos</li>
+                        <li>Recursos: prismarinho, esponjas, corais, tesouros submersos</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="md:col-span-1 border-4 border-green-500 p-1 bg-gray-700 shadow-md">
+                <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">OCEANO</p>
+                <img src="img/oceano.webp" alt="Bioma Oceano" class="w-full h-auto rounded-md mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabela de Comparação de Biomas -->
+    <h3 class="text-2xl font-game-title text-green-400 mb-4 border-t-4 border-green-500 pt-4">
+        Comparação Entre Biomas
+    </h3>
+    
+    <div class="table-container">
+        <div class="overflow-x-auto rounded-lg border-4 border-green-500 shadow-2xl mb-6">
+            <table class="min-w-full divide-y-4 divide-green-800">
+                <thead class="bg-green-900/50">
+                    <tr>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-green-200">
+                            Bioma
+                        </th>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-green-200">
+                            Recursos Exclusivos
+                        </th>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-green-200">
+                            Estruturas
+                        </th>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-green-200">
+                            Dificuldade
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-800 divide-y-2 divide-green-700">
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-green-300">Planície</td>
+                        <td class="px-3 py-4 text-gray-200">Cavalos, aldeias, flores</td>
+                        <td class="px-3 py-4 text-gray-200">Aldeias, poços</td>
+                        <td class="px-3 py-4 text-gray-200">Fácil</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-green-300">Taiga</td>
+                        <td class="px-3 py-4 text-gray-200">Lobos, bagas doces, pinheiros</td>
+                        <td class="px-3 py-4 text-gray-200">Aldeias de taiga, cabanas</td>
+                        <td class="px-3 py-4 text-gray-200">Médio</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-green-300">Deserto</td>
+                        <td class="px-3 py-4 text-gray-200">Cactos, templos, poços</td>
+                        <td class="px-3 py-4 text-gray-200">Templos do deserto</td>
+                        <td class="px-3 py-4 text-gray-200">Médio</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-green-300">Floresta</td>
+                        <td class="px-3 py-4 text-gray-200">Madeiras variadas, flores</td>
+                        <td class="px-3 py-4 text-gray-200">Mansões da floresta</td>
+                        <td class="px-3 py-4 text-gray-200">Fácil</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-green-300">Montanha</td>
+                        <td class="px-3 py-4 text-gray-200">Esmeraldas, cabras</td>
+                        <td class="px-3 py-4 text-gray-200">Estruturas raras</td>
+                        <td class="px-3 py-4 text-gray-200">Difícil</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-green-300">Pântano</td>
+                        <td class="px-3 py-4 text-gray-200">Argila, lírios, sapos</td>
+                        <td class="px-3 py-4 text-gray-200">Cabana das bruxas</td>
+                        <td class="px-3 py-4 text-gray-200">Médio</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-green-300">Oceano</td>
+                        <td class="px-3 py-4 text-gray-200">Prismarinho, corais, tesouros</td>
+                        <td class="px-3 py-4 text-gray-200">Monumentos, naufrágios</td>
+                        <td class="px-3 py-4 text-gray-200">Difícil</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mapa do Mundo -->
+    <div class="mt-8 p-4 bg-gray-700 rounded-md border-4 border-green-500">
+        <h3 class="text-xl font-game-title text-green-400 mb-4 text-center">Mapa do Mundo Minecraft</h3>
+        
+        <img src="img/mapa minecraft2.webp" alt="Mapa do Mundo Minecraft" 
+             class="w-full md:w-1/2 h-auto rounded-md mb-4 mx-auto block">
+        
+        <p class="text-center text-gray-300">
+            O mundo do Minecraft é virtualmente infinito, com biomas gerados proceduralmente. Cada mundo é único, oferecendo experiências diferentes a cada nova aventura!
+        </p>
+    </div>
+
+    <!-- Dicas de Exploração -->
+    <h3 class="text-2xl font-game-title text-yellow-400 mb-4 border-t-4 border-yellow-500 pt-4">
+        Dicas de Exploração
+    </h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="dimension-card plains-card">
+            <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">Preparação para Exploração</h4>
+            <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                <li>Leve suprimentos adequados para cada bioma</li>
+                <li>Marque seu caminho com tochas ou blocos</li>
+                <li>Construa abrigos temporários durante a noite</li>
+                <li>Use mapas ou coordenadas para não se perder</li>
+                <li>Prepare equipamentos específicos (botas para neve, etc.)</li>
+            </ul>
+        </div>
+        
+        <div class="dimension-card forest-card">
+            <h4 class="text-xl font-bold text-green-300 mb-2 font-game-title">Recursos por Bioma</h4>
+            <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                <li>Planícies: melhores para construção inicial</li>
+                <li>Florestas: melhor fonte de madeira</li>
+                <li>Montanhas: mineração de alto nível</li>
+                <li>Oceanos: tesouros e recursos aquáticos</li>
+                <li>Pântanos: poções e materiais únicos</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Link para setor da mesma página (Topo) -->
+    <a href="#top" class="text-sm font-game-title text-green-500 hover:text-green-300 transition duration-200 block text-right mt-4">
+        [TOPO]
+    </a>
+</section>
+
+<!-- PAGINA 4: Mineração & Recursos -->
+<section id="mineracao" class="page-section p-6 mt-8 hidden">
+    <h2 class="text-3xl sm:text-4xl font-game-title text-red-400 title-block">
+        Mineração e Progressão de Ferramentas
+    </h2>
+
+    <p class="paragrafo-formatado mb-8 text-gray-300">
+        A mineração é a espinha dorsal da progressão no Minecraft. Conheça as melhores camadas para encontrar cada minério, a progressão de ferramentas e técnicas avançadas para maximizar sua eficiência.
+    </p>
+
+    <!-- NOVIDADES DA ATUALIZAÇÃO -->
+    <div class="bg-gradient-to-r from-purple-900 to-blue-900 p-6 rounded-lg border-2 border-purple-500 mb-8">
+        <h3 class="text-2xl font-game-title text-purple-300 mb-4">🆕 Novidades da Atualização 1.20+</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <h4 class="text-lg font-bold text-purple-300 mb-2">Mudanças Principais</h4>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Novas <strong>Cavernas Comuns</strong> e <strong>Cavernas de Gotejamento</strong></li>
+                    <li>Bioma <strong>Deep Dark</strong> e as <strong>Ancient Cities</strong></li>
+                    <li>Distribuição de minérios completamente revisada</li>
+                    <li>Adição do minério de <strong>Cobre</strong></li>
+                    <li>Novos blocos: <strong>Deepslate</strong>, <strong>Calcite</strong>, <strong>Tuff</strong></li>
+                    <li>Sistema de <strong>escuta</strong> do Warden</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold text-purple-300 mb-2">Minérios Adicionados/Modificados</h4>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li><strong>Cobre</strong> - Novo minério versátil</li>
+                    <li><strong>Deepslate</strong> - Nova variante de pedra</li>
+                    <li>Minérios agora geram em <strong>veios maiores</strong></li>
+                    <li><strong>Carvão</strong> gera em qualquer altura</li>
+                    <li><strong>Ferro</strong> mais abundante em todos os níveis</li>
+                    <li><strong>Diamante</strong> mais raro mas em veios maiores</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabela de Mineração/Camadas ATUALIZADA -->
+    <h3 class="text-2xl font-game-title text-red-400 mb-4 border-b-2 border-red-500 pb-2">
+        Melhores Camadas (Y-Level) <span class="new-feature-badge">ATUALIZADO</span>
+    </h3>
+    
+    <div class="table-container">
+        <div class="overflow-x-auto rounded-lg border-4 border-red-500 shadow-2xl mb-10">
+            <table class="min-w-full divide-y-4 divide-red-800">
+                <thead class="bg-red-900/50">
+                    <tr>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-red-200">
+                            Minério
+                        </th>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-red-200">
+                            Camada Ideal (Y) <span class="new-feature-badge">NOVO</span>
+                        </th>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-red-200">
+                            Usado Principalmente Para
+                        </th>
+                        <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-red-200">
+                            Ferramenta Mínima
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-800 divide-y-2 divide-red-700">
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Carvão</td>
+                        <td class="px-3 py-4 text-gray-200">Y=136 a Y=320 e Y=95 a Y=0</td>
+                        <td class="px-3 py-4 text-gray-200">Tochas, Fornalhas (Combustível)</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Madeira</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Cobre <span class="new-feature-badge">NOVO</span></td>
+                        <td class="px-3 py-4 text-gray-200">Y=48 a Y=0</td>
+                        <td class="px-3 py-4 text-gray-200">Para-raios, Tijolos de Cobre, Decoração</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Pedra</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Ferro</td>
+                        <td class="px-3 py-4 text-gray-200">Y=232 (montanhas) e Y=16 a Y=-64</td>
+                        <td class="px-3 py-4 text-gray-200">Armaduras, Baldes, Ferramentas Intermediárias</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Pedra</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Ouro</td>
+                        <td class="px-3 py-4 text-gray-200">Y=32 a Y=-64 (mais comum em Y=-16)</td>
+                        <td class="px-3 py-4 text-gray-200">Comida Dourada, Trilhos, Nether</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Ferro</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Redstone</td>
+                        <td class="px-3 py-4 text-gray-200">Y=-64 a Y=-58</td>
+                        <td class="px-3 py-4 text-gray-200">Redstone, Componentes Eletrônicos</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Ferro</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Diamante</td>
+                        <td class="px-3 py-4 text-gray-200">Y=-64 a Y=-58</td>
+                        <td class="px-3 py-4 text-gray-200">Ferramentas e Armaduras de Elite</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Ferro</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Esmeralda</td>
+                        <td class="px-3 py-4 text-gray-200">Y=236 a Y=320 (apenas em montanhas)</td>
+                        <td class="px-3 py-4 text-gray-200">Comércio com Aldeões</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Ferro</td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Lapiz Lazuli</td>
+                        <td class="px-3 py-4 text-gray-200">Y=64 a Y=-64</td>
+                        <td class="px-3 py-4 text-gray-200">Encantamentos, Corante Azul</td>
+                        <td class="px-3 py-4 text-gray-200">Picareta de Pedra</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- NOVOS BIOMAS DE CAVERNA -->
+    <h3 class="text-2xl font-game-title text-blue-400 mb-4 border-t-4 border-blue-500 pt-4">
+        🏔️ Novos Biomas de Caverna <span class="new-feature-badge">1.18+</span>
+    </h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="cave-biome-card bg-gray-800 p-6 rounded-lg border-2 border-blue-500">
+            <h4 class="text-xl font-game-title text-blue-300 mb-3">Cavernas de Gotejamento</h4>
+            <div class="mineral-spotlight mb-3">
+                <p class="text-gray-300 text-sm">
+                    <strong>Características:</strong> Estalactites, estalagmites, água que goteja e poças de lava. 
+                    Perigosos mas recompensadores.
+                </p>
+            </div>
+            <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                <li><strong>Recursos:</strong> Cobre, Ferro, Pontas de Dripstone</li>
+                <li><strong>Perigos:</strong> Queda de stalactites, afogamento</li>
+                <li><strong>Dica:</strong> Use escadas para navegar verticalmente</li>
+            </ul>
+        </div>
+        
+        <div class="cave-biome-card bg-gray-800 p-6 rounded-lg border-2 border-green-500">
+            <h4 class="text-xl font-game-title text-green-300 mb-3">Cavernas Lush</h4>
+            <div class="mineral-spotlight mb-3">
+                <p class="text-gray-300 text-sm">
+                    <strong>Características:</strong> Vegetação exuberante, iluminação natural com 
+                    glow berries e spore blossoms.
+                </p>
+            </div>
+            <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                <li><strong>Recursos:</strong> Axolotes, Glow Berries, Spore Blossoms</li>
+                <li><strong>Perigos:</strong> Baixos, afogamento em piscinas</li>
+                <li><strong>Dica:</strong> Colete glow berries para iluminação gratuita</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- DEEP DARK E ANCIENT CITIES -->
+    <div class="bg-gray-800 p-6 rounded-lg border-2 border-purple-500 mb-8">
+        <h3 class="text-2xl font-game-title text-purple-400 mb-4">🌑 Deep Dark & Ancient Cities <span class="new-feature-badge">1.19+</span></h3>
+        
+        <div class="deep-dark-warning">
+            <strong>⚠️ ALERTA:</strong> O Deep Dark é extremamente perigoso! O Warden pode matar jogadores com armadura netherita em 2 golpes!
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <h4 class="text-lg font-bold text-purple-300 mb-2">Sobrevivência no Deep Dark</h4>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li><strong>Silêncio é crucial</strong> - Evite fazer barulho</li>
+                    <li>O Warden é <strong>cego</strong> mas tem audição excelente</li>
+                    <li>Use <strong>lanças</strong> ou <strong>arco</strong> para atacar à distância</li>
+                    <li>Projéteis criam vibrações que alertam o Warden</li>
+                    <li>Lana se regenera rapidamente - fuja em vez de lutar</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold text-purple-300 mb-2">Saques das Ancient Cities</h4>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li><strong>Enchanting Templates</strong> - Para upgrade de equipamentos</li>
+                    <li><strong>Swift Sneak</strong> - Encantamento exclusivo</li>
+                    <li><strong>Recovery Compass</strong> - Localiza seu ponto de morte</li>
+                    <li><strong>Disc Fragments</strong> - Para criar o Music Disc 5</li>
+                    <li><strong>Mace</strong> - Nova arma corpo-a-corpo poderosa</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- MINÉRIOS DESTAQUE -->
+    <h3 class="text-2xl font-game-title text-yellow-400 mb-4 border-t-4 border-yellow-500 pt-4">
+        ⭐ Minérios em Destaque
+    </h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-gray-800 p-4 rounded-lg border-2 border-orange-500">
+            <div class="text-center mb-3">
+                <div class="inline-block bg-orange-600 p-2 rounded-lg">
+                    <span class="text-white font-game-title text-sm">COBRE</span>
+                </div>
+            </div>
+            <h4 class="text-lg font-bold text-orange-300 mb-2 text-center">Minério Versátil</h4>
+            <p class="text-gray-300 text-sm mb-3">
+                Encontrado em veios grandes, oxida com o tempo criando variações estéticas.
+            </p>
+            <div class="bg-gray-700 p-2 rounded text-center">
+                <span class="text-yellow-300 text-xs">USOS: Para-raios, Tijolos, Decoração</span>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 p-4 rounded-lg border-2 border-light-blue-500">
+            <div class="text-center mb-3">
+                <div class="inline-block bg-blue-600 p-2 rounded-lg">
+                    <span class="text-white font-game-title text-sm">DEEPSLATE</span>
+                </div>
+            </div>
+            <h4 class="text-lg font-bold text-blue-300 mb-2 text-center">Nova Rocha</h4>
+            <p class="text-gray-300 text-sm mb-3">
+                Substitui a pedra em profundidades abaixo de Y=0. Requer mais tempo para minerar.
+            </p>
+            <div class="bg-gray-700 p-2 rounded text-center">
+                <span class="text-yellow-300 text-xs">APLICAÇÃO: Construção, Fornalhas</span>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 p-4 rounded-lg border-2 border-gray-500">
+            <div class="text-center mb-3">
+                <div class="inline-block bg-gray-600 p-2 rounded-lg">
+                    <span class="text-white font-game-title text-sm">CALCITE</span>
+                </div>
+            </div>
+            <h4 class="text-lg font-bold text-gray-300 mb-2 text-center">Mineral Estético</h4>
+            <p class="text-gray-300 text-sm mb-3">
+                Gera em camadas entre tuff e smooth basalt. Excelente para construções modernas.
+            </p>
+            <div class="bg-gray-700 p-2 rounded text-center">
+                <span class="text-yellow-300 text-xs">FUNÇÃO: Puramente Decorativa</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TÉCNICAS DE MINERAÇÃO ATUALIZADAS -->
+    <h3 class="text-2xl font-game-title text-green-400 mb-4 border-t-4 border-green-500 pt-4">
+        Técnicas de Mineração Otimizadas <span class="new-feature-badge">1.18+</span>
+    </h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div class="bg-gray-800 p-6 rounded-lg border-2 border-green-500">
+            <h4 class="text-xl font-game-title text-green-300 mb-4">Estratégia de Camadas</h4>
+            <div class="space-y-4">
+                <div>
+                    <h5 class="font-bold text-green-200">Y=-58: Diamantes & Redstone</h5>
+                    <p class="text-gray-300 text-sm">Minerar em Y=-58 expõe você a todas as camadas de diamante.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-green-200">Y=-16: Ouro & Ferro</h5>
+                    <p class="text-gray-300 text-sm">Excelente camada para recursos intermediários.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-green-200">Y=15: Exploração Segura</h5>
+                    <p class="text-gray-300 text-sm">Evita lava e oferece bons recursos básicos.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 p-6 rounded-lg border-2 border-green-500">
+            <h4 class="text-xl font-game-title text-green-300 mb-4">Dicas de Eficiência</h4>
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                <li>Use <strong>picaretas com Eficiência V</strong> para mineração rápida</li>
+                <li><strong>Toque Suave</strong> é essencial para coletar deepslate</li>
+                <li><strong>Fortuna III</strong> triplica drops de diamante, carvão e esmeralda</li>
+                <li>Mine em <strong>túneis de 1x2</strong> com 3 blocos de espaçamento</li>
+                <li>Use <strong>aquática</strong> para explorar cavernas inundadas</li>
+                <li><strong>Inquebrável III</strong> aumenta drasticamente a durabilidade</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Formulário de Dicas de Mineração -->
+    <div class="form-container mt-8 bg-gray-800 p-6 rounded-lg border-2 border-green-500">
+        <h3 class="text-xl font-game-title text-green-400 mb-4">Compartilhe suas estratégias de mineração</h3>
+        <form id="miningTipForm" method="post" action="/submit-mining-tip">
+            <div class="form-group mb-4">
+                <label for="miningTip" class="form-label block text-green-300 mb-2">Sua estratégia de mineração:</label>
+                <textarea id="miningTip" name="miningTip" class="form-input w-full bg-gray-700 border border-green-500 rounded p-3 text-white" rows="4" required placeholder="Ex: Como você lida com o Deep Dark? Qual sua camada favorita na 1.20?"></textarea>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="form-group">
+                    <label for="playerName" class="form-label block text-green-300 mb-2">Seu nome (opcional):</label>
+                    <input type="text" id="playerName" name="playerName" class="form-input w-full bg-gray-700 border border-green-500 rounded p-3 text-white" placeholder="Seu nome no Minecraft">
+                </div>
+                
+                <div class="form-group">
+                    <label for="minecraftVersion" class="form-label block text-green-300 mb-2">Versão do Minecraft:</label>
+                    <select id="minecraftVersion" name="minecraftVersion" class="form-input w-full bg-gray-700 border border-green-500 rounded p-3 text-white">
+                        <option value="1.20+">1.20 ou superior</option>
+                        <option value="1.19">1.19 (The Wild Update)</option>
+                        <option value="1.18">1.18 (Caves & Cliffs Part 2)</option>
+                        <option value="1.17">1.17 (Caves & Cliffs Part 1)</option>
+                        <option value="pre-1.17">Antes da 1.17</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group mb-4">
+                <label class="form-label block text-green-300 mb-2">Qual sua especialidade?</label>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="specialty" value="deepslate" class="form-checkbox text-green-500">
+                        <span class="ml-2 text-gray-300 text-sm">Deepslate</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="specialty" value="deepdark" class="form-checkbox text-purple-500">
+                        <span class="ml-2 text-gray-300 text-sm">Deep Dark</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="specialty" value="caves" class="form-checkbox text-blue-500">
+                        <span class="ml-2 text-gray-300 text-sm">Novas Cavernas</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="specialty" value="copper" class="form-checkbox text-orange-500">
+                        <span class="ml-2 text-gray-300 text-sm">Cobre</span>
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit" class="form-submit bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded transition duration-200 w-full md:w-auto">Compartilhar Estratégia</button>
+        </form>
+    </div>
+
+    <!-- Link para setor da mesma página (Topo) -->
+    <a href="#top" class="text-sm font-game-title text-green-500 hover:text-green-300 transition duration-200 block text-right mt-4">
+        [TOPO]
+    </a>
+</section>
+
+        <!-- PAGINA 5: OS SUBMUNDOS (NOVA PÁGINA) -->
+        <section id="submundos" class="page-section p-6 mt-8 hidden">
+            <h2 class="text-3xl sm:text-4xl font-game-title text-purple-400 title-block">
+                Os Submundos: Nether e The End
+            </h2>
+
+            <p class="paragrafo-formatado mb-8 text-gray-300">
+                Além do mundo principal, o Minecraft possui duas dimensões alternativas que oferecem desafios únicos e recursos exclusivos. Dominar esses submundos é essencial para a progressão no jogo.
+            </p>
+
+            <!-- SEÇÃO DO NETHER -->
+            <div class="nether-section">
+                <h3 class="text-2xl font-game-title text-red-400 mb-4 border-b-2 border-red-500 pb-2">
+                    O Nether: A Dimensão Infernal
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <p class="paragrafo-formatado text-gray-300 mb-4">
+                            O Nether é uma dimensão perigosa e hostil, composta principalmente de netherrack, lava e estruturas únicas. Acesso através de um portal de obsidiana ativado, este submundo oferece recursos valiosos e desafios extremos.
+                        </p>
+                        
+                        <div class="dimension-card nether-card">
+                            <h4 class="text-xl font-bold text-red-300 mb-2 font-game-title">Portal para o Nether</h4>
+                            <p class="text-gray-300 mb-2">Para criar um portal, você precisa:</p>
+                            <ul class="list-disc list-inside ml-4 text-gray-300">
+                                <li>14 blocos de obsidiana (formato 4x5)</li>
+                                <li>Isqueiro para ativar o portal</li>
+                                <li>Proteção contra mobs hostis durante a construção</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="border-4 border-red-500 p-1 bg-gray-700 shadow-md">
+                        <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">O NETHER</p>
+                        <img src="img/nether mundo.webp" alt="Portal do Nether" class="w-full h-auto rounded-md mb-2">
+                    </div>
+                </div>
+                
+                <!-- Recursos do Nether -->
+                <h4 class="text-xl font-bold text-red-300 mt-6 mb-2 font-game-title">Recursos Exclusivos do Nether</h4>
+                
+                <div class="table-container">
+                    <div class="overflow-x-auto rounded-lg border-4 border-red-500 shadow-2xl mb-6">
+                        <table class="min-w-full divide-y-4 divide-red-800">
+                            <thead class="bg-red-900/50">
+                                <tr>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-red-200">
+                                        Recurso
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-red-200">
+                                        Utilidade
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-red-200">
+                                        Onde Encontrar
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-gray-800 divide-y-2 divide-red-700">
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Quartzo do Nether</td>
+                                    <td class="px-3 py-4 text-gray-200">Experiência (XP), Blocos Decorativos, Redstone</td>
+                                    <td class="px-3 py-4 text-gray-200">Em veios na Netherrack</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Luminita (Glowstone)</td>
+                                    <td class="px-3 py-4 text-gray-200">Fonte de luz intensa, poções</td>
+                                    <td class="px-3 py-4 text-gray-200">Teto do Nether</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Areia de Almas</td>
+                                    <td class="px-3 py-4 text-gray-200">Criação de Wither, fazendas de bolhas</td>
+                                    <td class="px-3 py-4 text-gray-200">Vales de Areia de Almas</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-red-300">Antiga Sucata (Netherita)</td>
+                                    <td class="px-3 py-4 text-gray-200">Melhoria da armadura de Diamante</td>
+                                    <td class="px-3 py-4 text-gray-200">Mineração em Y=15</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Estruturas do Nether -->
+                <h4 class="text-xl font-bold text-red-300 mt-6 mb-2 font-game-title">Estruturas do Nether</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="dimension-card nether-card">
+                        <h5 class="text-lg font-bold text-red-300 mb-2">Fortalezas do Nether</h5>
+                        <p class="text-gray-300">Estruturas de tijolos do nether que contêm salas com baús valiosos, mas o mais importante: os portais para o End.</p>
+                    </div>
+                    
+                    <div class="dimension-card nether-card">
+                        <h5 class="text-lg font-bold text-red-300 mb-2">Bastions Remanescentes</h5>
+                        <p class="text-gray-300">Estruturas geradas pelos Piglins, contendo tesouros valiosos mas extremamente bem defendidas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEÇÃO DO THE END -->
+            <div class="end-section">
+                <h3 class="text-2xl font-game-title text-purple-400 mb-4 border-b-2 border-purple-500 pb-2">
+                    The End: A Dimensão Final
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <p class="paragrafo-formatado text-gray-300 mb-4">
+                            The End é a dimensão final do Minecraft, um reino vazio e misterioso onde o jogador enfrenta o Ender Dragon. Após derrotar o dragão, portais se abrem para as Ilhas Exteriores, onde as End Cities oferecem os melhores saques do jogo.
+                        </p>
+                        
+                        <div class="dimension-card end-card">
+                            <h4 class="text-xl font-bold text-purple-300 mb-2 font-game-title">Portal para The End</h4>
+                            <p class="text-gray-300 mb-2">Para acessar The End, você precisa:</p>
+                            <ul class="list-disc list-inside ml-4 text-gray-300">
+                                <li>Encontrar uma Fortaleza do Nether</li>
+                                <li>Coletar 12 Olhos de Ender</li>
+                                <li>Ativar o Portal do End na Fortaleza</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="border-4 border-purple-500 p-1 bg-gray-700 shadow-md">
+                        <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">THE END</p>
+                        <img src="img/portal the end.webp" alt="The End" class="w-full h-auto rounded-md mb-2">
+                    </div>
+                </div>
+                
+                <!-- Recursos do The End -->
+                <h4 class="text-xl font-bold text-purple-300 mt-6 mb-2 font-game-title">Recursos Exclusivos do The End</h4>
+                
+                <div class="table-container">
+                    <div class="overflow-x-auto rounded-lg border-4 border-purple-500 shadow-2xl mb-6">
+                        <table class="min-w-full divide-y-4 divide-purple-800">
+                            <thead class="bg-purple-900/50">
+                                <tr>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-purple-200">
+                                        Recurso
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-purple-200">
+                                        Utilidade
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs font-game-title uppercase tracking-wider text-purple-200">
+                                        Onde Encontrar
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-gray-800 divide-y-2 divide-purple-700">
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-purple-300">Poças de Chorus</td>
+                                    <td class="px-3 py-4 text-gray-200">Fruta Chorus, teletransporte</td>
+                                    <td class="px-3 py-4 text-gray-200">Ilhas Exteriores do End</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-purple-300">End Stone</td>
+                                    <td class="px-3 py-4 text-gray-200">Construção resistente a explosões</td>
+                                    <td class="px-3 py-4 text-gray-200">Toda a dimensão do End</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-purple-300">Purpur</td>
+                                    <td class="px-3 py-4 text-gray-200">Blocos decorativos exclusivos</td>
+                                    <td class="px-3 py-4 text-gray-200">End Cities</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-4 whitespace-nowrap font-bold text-purple-300">Shulker Shells</td>
+                                    <td class="px-3 py-4 text-gray-200">Criação de Shulker Boxes</td>
+                                    <td class="px-3 py-4 text-gray-200">Shulkers nas End Cities</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Estruturas do The End -->
+                <h4 class="text-xl font-bold text-purple-300 mt-6 mb-2 font-game-title">Estruturas do The End</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="dimension-card end-card">
+                        <h5 class="text-lg font-bold text-purple-300 mb-2">End Cities</h5>
+                        <p class="text-gray-300">Estruturas geradas nas Ilhas Exteriores após derrotar o Ender Dragon. Contêm tesouros valiosos, incluindo Elytras.</p>
+                    </div>
+                    
+                    <div class="dimension-card end-card">
+                        <h5 class="text-lg font-bold text-purple-300 mb-2">Navios do End</h5>
+                        <p class="text-gray-300">Estruturas raras que acompanham algumas End Cities. Contêm a cabeça do dragão e um Elytra.</p>
+                    </div>
+                </div>
+                
+                <!-- Imagem da End City -->
+                <div class="border-4 border-purple-500 p-1 bg-gray-700 shadow-md mt-4">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">END CITY</p>
+                    <img src="img/the end.webp" alt="End City" class="w-full h-auto rounded-md mb-2">
+                </div>
+            </div>
+            
+            <!-- Dicas de Sobrevivência -->
+            <h3 class="text-2xl font-game-title text-yellow-400 mb-4 border-t-4 border-yellow-500 pt-4">
+                Dicas de Sobrevivência nos Submundos
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="dimension-card nether-card">
+                    <h4 class="text-xl font-bold text-red-300 mb-2 font-game-title">Dicas para o Nether</h4>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Use armadura de ouro para evitar ataques dos Piglins</li>
+                        <li>Nunca durma no Nether - camas explodem!</li>
+                        <li>Leve fogos de artifício e Elytra para navegação</li>
+                        <li>Construa pontes seguras sobre lava</li>
+                        <li>Cuidado com Ghasts - eles podem destruir seus blocos</li>
+                    </ul>
+                </div>
+                
+                <div class="dimension-card end-card">
+                    <h4 class="text-xl font-bold text-purple-300 mb-2 font-game-title">Dicas para The End</h4>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Destrua os cristais do Ender Dragon primeiro</li>
+                        <li>Leve muitas flechas e uma boa espada</li>
+                        <li>Use abóboras na cabeça para evitar ataques de Endermen</li>
+                        <li>Leve blocos para construir e escapar de perigos</li>
+                        <li>Após derrotar o dragão, explore as End Cities com cuidado</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Vídeo do YouTube sobre os submundos -->
+            <div class="mt-8">
+                <h3 class="text-2xl font-game-title text-purple-400 mb-4">Guia Completo dos Submundos</h3>
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe 
+                        width="100%" 
+                        height="400" 
+                        src="https://www.youtube.com/embed/x-PqKfK48iM" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Link para setor da mesma página (Topo) -->
+            <a href="#top" class="text-sm font-game-title text-green-500 hover:text-green-300 transition duration-200 block text-right mt-4">
+                [TOPO]
+            </a>
+        </section>
+
+        <!-- PAGINA 6: Contato (Profissional) -->
+        <section id="contato" class="page-section p-6 mt-8 hidden">
+            <h2 class="text-3xl sm:text-4xl font-game-title text-green-400 title-block">
+                Contato Profissional e Suporte
+            </h2>
+
+            <p class="paragrafo-formatado text-gray-300">
+                Para suporte técnico, parcerias de negócios ou consultas de imprensa, utilize os canais de comunicação listados abaixo.
+            </p>
+            
+            <!-- Informações de Contato Profissionais (Layout de Cards Simples) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                
+                <!-- Card de Email -->
+                <div class="p-4 bg-gray-700 rounded-md border-4 border-blue-500 shadow-lg transition hover:bg-gray-600">
+                    <p class="text-blue-300 font-game-title mb-2">📧 Suporte & Dúvidas</p>
+                    <a href="mailto:suporte@worldcraftguide.com" class="link-personalizado text-sm font-mono break-words">suporte@worldcraftguide.com</a>
+                </div>
+                
+                <!-- Card de Telefone -->
+                <div class="p-4 bg-gray-700 rounded-md border-4 border-blue-500 shadow-lg transition hover:bg-gray-600">
+                    <p class="text-blue-300 font-game-title mb-2">📞 Contato Telefônico</p>
+                    <p class="text-yellow-200 text-sm font-mono">+55 (68) 99945-2233</p>
+                </div>
+
+                <!-- Card de Parcerias -->
+                <div class="p-4 bg-gray-700 rounded-md border-4 border-blue-500 shadow-lg transition hover:bg-gray-600">
+                    <p class="text-blue-300 font-game-title mb-2">💼 Parcerias/Negócios</p>
+                    <a href="https://linkedin.com/company/worldcraft-official" target="_blank" class="link-personalizado text-sm font-mono">LinkedIn (Worldcraft Official)</a>
+                </div>
+
+                <!-- Card de Localização -->
+                <div class="p-4 bg-gray-700 rounded-md border-4 border-blue-500 shadow-lg transition hover:bg-gray-600">
+                    <p class="text-blue-300 font-game-title mb-2">📍 Endereço Principal</p>
+                    <p class="text-gray-400 text-sm">Rua dos Blocos, 101 - Vila Esmeralda</p>
+                    <p class="text-gray-400 text-sm">Cidade da Base, Worldcraft</p>
+                </div>
+            </div>
+            
+            <!-- Formulário de Contato -->
+            <div class="form-container">
+                <h3 class="text-xl font-game-title text-green-400 mb-4">Formulário de Contato</h3>
+                <form id="contactForm" method="post" action="/submit-contact">
+                    <div class="form-group">
+                        <label for="contactName" class="form-label">Nome:</label>
+                        <input type="text" id="contactName" name="contactName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail" class="form-label">Email:</label>
+                        <input type="email" id="contactEmail" name="contactEmail" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject" class="form-label">Assunto:</label>
+                        <select id="contactSubject" name="contactSubject" class="form-input" required>
+                            <option value="">Selecione...</option>
+                            <option value="support">Suporte Técnico</option>
+                            <option value="partnership">Parceria</option>
+                            <option value="suggestion">Sugestão</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage" class="form-label">Mensagem:</label>
+                        <textarea id="contactMessage" name="contactMessage" class="form-input" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+            
+            <!-- Link para setor da mesma página (Topo) -->
+            <a href="#top" class="text-sm font-game-title text-green-500 hover:text-green-300 transition duration-200 block text-right mt-4">
+                [TOPO]
+            </a>
+        </section>
+        
+        <!-- PAGINA 7: Minhas Construções (Galeria com Estilo Bloco) -->
+        <section id="minhas_construcoes" class="page-section p-6 mt-8 hidden">
+            <h2 class="text-3xl sm:text-4xl font-game-title text-yellow-400 title-block">
+                Minhas Construções (Minecraft Java)
+            </h2>
+
+            <!-- Aviso de Direitos e Versão -->
+            <p class="paragrafo-formatado mb-6 italic text-sm text-yellow-300 bg-gray-700 p-3 rounded-md border-l-8 border-yellow-500 shadow-md">
+                Todo o conteúdo visual e as construções apresentadas aqui, você pode pegar como uma referencia ou até mesmo como inspiração.
+            </p>
+
+            <h3 class="text-2xl font-game-title text-white mb-6">
+                Galeria de Projetos Pessoais
+            </h3>
+
+            <!-- Carrossel de imagens -->
+            <div class="carousel-container mb-8">
+                <div class="carousel-slide" id="carouselSlide">
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (11).jpeg" alt="Vista de noite">
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (10).jpeg" alt="Fornalha industrial">
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (9).jpeg" alt="Roda d'agua">
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (6).jpeg" alt="Farm de Ferro">
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36.jpeg" alt="Casa p/inspiração">
+                    <img src="img/Catavento.jpeg" alt="Catavento">
+                    <img src="img/Vista de cima da cidade.jpeg" alt="Vista Aérea da Cidade">
+                </div>
+                <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+                <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Os indicadores serão gerados via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Grid responsivo para as 7 fotos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Foto 1 (Card de Bloco) -->
+                <div class="p-1 bg-gray-900 border-4 border-white shadow-2xl hover:border-yellow-400 transition">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">Vista de noite</p>
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (11).jpeg" alt="Creeper" class="w-full h-auto rounded-md mb-2">
+                </div>
+                
+                <!-- Foto 2 (Card de Bloco) -->
+                <div class="p-1 bg-gray-900 border-4 border-white shadow-2xl hover:border-yellow-400 transition">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">Fornalha industrial</p>
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (10).jpeg" alt="Creeper" class="w-full h-auto rounded-md mb-2">
+                </div>
+                
+                <!-- Foto 3 (Card de Bloco) -->
+                <div class="p-1 bg-gray-900 border-4 border-white shadow-2xl hover:border-yellow-400 transition">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">Roda d'agua</p>
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (9).jpeg" alt="Creeper" class="w-full h-auto rounded-md mb-2">
+                </div>
+
+                <!-- Foto 4 (Card de Bloco) -->
+                <div class="p-1 bg-gray-900 border-4 border-white shadow-2xl hover:border-yellow-400 transition">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">Farm de Ferro</p>
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36 (6).jpeg" alt="Creeper" class="w-full h-auto rounded-md mb-2">
+                </div>
+                
+                <!-- Foto 5 (Card de Bloco) -->
+                <div class="p-1 bg-gray-900 border-4 border-white shadow-2xl hover:border-yellow-400 transition">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">Casa p/inspiração</p>
+                    <img src="img/WhatsApp Image 2025-10-04 at 08.41.36.jpeg" alt="Creeper" class="w-full h-auto rounded-md mb-2">
+                </div>
+                
+                <!-- Foto 6 (Card de Bloco) -->
+                <div class="p-1 bg-gray-900 border-4 border-white shadow-2xl hover:border-yellow-400 transition">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">Catavento</p>
+                    <img src="img/Catavento.jpeg" alt="Creeper" class="w-full h-auto rounded-md mb-2">
+                </div>
+
+                <!-- Foto 7 (Grande, ocupando 3 colunas no desktop) -->
+                <div class="lg:col-span-3 p-2 bg-gray-900 border-4 border-white shadow-2xl hover:border-yellow-400 transition">
+                    <p class="text-center text-sm mb-1 text-yellow-300 font-bold font-game-title">Vista Aérea da Cidade</p>
+                    <img src="img/Vista de cima da cidade.jpeg" alt="Creeper" class="w-full h-auto rounded-md mb-2">
+                </div>
+                
+            </div>
+
+            <!-- Formulário de Envio de Construção -->
+            <div class="form-container mt-8">
+                <h3 class="text-xl font-game-title text-green-400 mb-4">Envie sua construção</h3>
+                <form id="constructionSubmitForm" method="post" action="/submit-construction" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="constructionName" class="form-label">Nome da Construção:</label>
+                        <input type="text" id="constructionName" name="constructionName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="constructionType" class="form-label">Tipo de Construção:</label>
+                        <select id="constructionType" name="constructionType" class="form-input" required>
+                            <option value="">Selecione...</option>
+                            <option value="house">Casa</option>
+                            <option value="castle">Castelo</option>
+                            <option value="farm">Fazenda</option>
+                            <option value="redstone">Máquina Redstone</option>
+                            <option value="decorative">Decoração</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="constructionImage" class="form-label">Imagem da Construção:</label>
+                        <input type="file" id="constructionImage" name="constructionImage" class="form-input" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="constructionDescription" class="form-label">Descrição:</label>
+                        <textarea id="constructionDescription" name="constructionDescription" class="form-input" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Enviar Construção</button>
+                </form>
+            </div>
+            
+            <!-- Link para setor da mesma página (Topo) -->
+            <a href="#top" class="text-sm font-game-title text-green-500 hover:text-green-300 transition duration-200 block text-right mt-4">
+                [TOPO]
+            </a>
+        </section>
+    </main>
+
+    <!-- Rodapé em estilo bloco escuro -->
+    <footer class="bg-gray-900 mt-12 py-6 border-t-8 border-gray-700">
+        <div class="container-responsivo text-center text-gray-400 text-sm font-game-title">
+            <p>&copy; 2025 Worldcraft Guia. Não afiliado à Mojang Studios.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Função JavaScript para simular a navegação entre as páginas (seções)
+        const pageSections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function showPage(pageId) {
+            // Esconde todas as seções
+            pageSections.forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Mostra a seção desejada
+            const targetSection = document.getElementById(pageId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            // Atualiza o estado "ativo" do link de navegação
+            navLinks.forEach(link => {
+                // Remove todas as classes ativas
+                link.classList.remove('active', 'active-guide', 'active-mining', 'active-nether', 'active-mybuilds');
+                
+                // Redefine as cores de fundo padrão
+                if (link.id === 'nav-minhas_construcoes') {
+                    link.classList.add('bg-yellow-500', 'text-gray-900');
+                } else {
+                    link.classList.add('bg-green-500', 'text-gray-900');
+                }
+
+                if (link.getAttribute('href') === `#${pageId}`) {
+                    // Adiciona a classe 'active'
+                    link.classList.add('active');
+                    link.classList.remove('bg-green-500', 'bg-yellow-500', 'text-gray-900');
+                    
+                    // Adiciona a cor de fundo específica
+                    if (pageId === 'minhas_construcoes') {
+                        link.classList.add('active-mybuilds');
+                    } else if (pageId === 'mineracao') {
+                        link.classList.add('active-mining');
+                    } else if (pageId === 'submundos') { // Nova condição para os submundos
+                        link.classList.add('active-nether');
+                    }
+                     else {
+                        link.classList.add('active-guide');
+                    }
+                }
+            });
+        }
+
+        // Inicialização: Exibir a primeira página ao carregar
+        window.onload = () => {
+            // Adicionado 'submundos' à lista de páginas válidas
+            const validPages = ['mobs', 'construcao', 'mapas_biomas', 'mineracao', 'submundos', 'contato', 'minhas_construcoes'];
+            let initialPage = window.location.hash.substring(1) || 'mobs';
+
+            if (validPages.includes(initialPage)) {
+                 showPage(initialPage);
+            } else {
+                 showPage('mobs');
+            }
+            
+            // Inicializar o carrossel
+            initCarousel();
+        };
+
+        // Adiciona funcionalidade de click para garantir que o hash e a visualização funcionem
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('href').substring(1);
+                window.history.pushState(null, '', `#${pageId}`); // Atualiza a URL sem recarregar
+                showPage(pageId);
+            });
+        });
+
+        // Menu hambúrguer para dispositivos móveis
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburgerMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link (para dispositivos móveis)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Funcionalidade JavaScript 1: Carrossel de imagens
+        let currentSlide = 0;
+        
+        function initCarousel() {
+            const carouselSlide = document.getElementById('carouselSlide');
+            const carouselIndicators = document.getElementById('carouselIndicators');
+            const slides = carouselSlide.querySelectorAll('img');
+            
+            // Criar indicadores
+            slides.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('carousel-indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(index));
+                carouselIndicators.appendChild(indicator);
+            });
+            
+            updateCarousel();
+        }
+        
+        function updateCarousel() {
+            const carouselSlide = document.getElementById('carouselSlide');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            carouselSlide.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function nextSlide() {
+            const slides = document.querySelectorAll('#carouselSlide img');
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            const slides = document.querySelectorAll('#carouselSlide img');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        // Funcionalidade JavaScript 2: Alternar modo escuro/claro
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            
+            // Salvar preferência no localStorage
+            if (document.body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Verificar preferência salva ao carregar a página
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+        
+        // Funcionalidade JavaScript 3: Mostrar informações de bioma
+        function showBiomaInfo(bioma) {
+            const biomasInfo = {
+                plains: {
+                    name: "Planície",
+                    description: "Bioma plano e aberto, ideal para construções iniciais.",
+                    resources: "Grama, flores, árvores de carvalho",
+                    mobs: "Vacas, ovelhas, porcos, galinhas"
+                },
+                taiga: {
+                    name: "Taiga",
+                    description: "Bioma frio com árvores de pinheiro e lobos.",
+                    resources: "Pinheiros, lobos, flores de lilás",
+                    mobs: "Lobos, raposas, ursos polares"
+                },
+                desert: {
+                    name: "Deserto",
+                    description: "Bioma quente e seco com areia e cactos.",
+                    resources: "Areia, cactos, templos do deserto",
+                    mobs: "Esqueletos, coelhos do deserto"
+                },
+                jungle: {
+                    name: "Floresta",
+                    description: "Bioma denso com árvores altas e vegetação exuberante.",
+                    resources: "Jungle wood, coco, templos da selva",
+                    mobs: "Papagaios, ocelotes, pandas"
+                }
+            };
+            
+            const info = biomasInfo[bioma];
+            if (info) {
+                alert(`${info.name}\n\n${info.description}\n\nRecursos: ${info.resources}\nMobs: ${info.mobs}`);
+            }
+        }
+
+        // Adicionar evento aos formulários para prevenir envio (apenas demonstração)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Formulário enviado com sucesso! (Esta é apenas uma demonstração)');
+                this.reset();
+            });
+        });
+    </script>
+
+</body>
+</html>
